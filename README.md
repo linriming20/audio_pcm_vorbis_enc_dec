@@ -74,8 +74,9 @@ libvorbis-1.3.7/_install/include/
 ##### a. demo现状
 
 - 参考`libvorbis-1.3.7/examples/`目录下实现的代码；
+- `blog_readOggPage.c`是在参考文章中的代码基础上调整的；
 
-- 
+- `main_pcm_2_ogg_vorbis.c`和`main_ogg_vorbis_2_pcm.c`可以正常编解码，并且能正常播放；
 
 
 ##### b. 关于verbois格式的说明
@@ -98,19 +99,29 @@ libvorbis-1.3.7/_install/include/
 ##### a. 编译
 
 ```bash
-
+make clean && make
 ```
 
 ##### b. 编码
 
 ```bash
-
+$ ./pcm_2_ogg_vorbis 
+Usage: 
+         ./pcm_2_ogg_vorbis <in-pcm-file> <sample-rate> <channels> <samples once> <quality(-0.1~1.0)> <out-ogg-file>
+examples: 
+         ./pcm_2_ogg_vorbis ./audio/test_8000_16_1.pcm  8000 1 160 0.8 out1.ogg
+         ./pcm_2_ogg_vorbis ./audio/test_44100_16_2.pcm 44100 2 1024 0.5 out2.ogg
 ```
 
 ##### c. 解码
 
 ```bash
-
+$ ./ogg_vorbis_2_pcm 
+Usage: 
+         ./ogg_vorbis_2_pcm <in-ogg-vorbis-file> <out-pcm-file>
+examples: 
+         ./ogg_vorbis_2_pcm ./audio/out1.ogg out1.pcm
+         ./ogg_vorbis_2_pcm ./audio/out2.ogg out2.pcm
 ```
 
 #### 4、参考文章
@@ -122,5 +133,46 @@ libvorbis-1.3.7/_install/include/
 #### 5、demo目录架构
 
 ```bash
+$ tree
+.
+├── audio
+│   ├── out1.ogg
+│   ├── out2.ogg
+│   ├── test_44100_16_2.pcm
+│   └── test_8000_16_1.pcm
+├── avfile
+├── blog_readOggPage.c
+├── docs
+│   ├── Vorbis - 求闻百科，共笔求闻.mhtml
+│   ├── 【音视频 _ Ogg】libogg库详细介绍以及使用——附带libogg库解析.opus文件的C源码-CSDN博客.mhtml
+│   └── 【音视频 _ Ogg】Ogg封装格式详解——包含Ogg封装过程、数据包(packet)、页(page)、段(segment)等-CSDN博客.mhtml
+├── include
+│   ├── ogg
+│   │   ├── config_types.h
+│   │   ├── ogg.h
+│   │   └── os_types.h
+│   └── vorbis
+│       ├── codec.h
+│       ├── vorbisenc.h
+│       └── vorbisfile.h
+├── lib
+│   ├── libogg.a
+│   ├── libvorbis.a
+│   ├── libvorbisenc.a
+│   └── libvorbisfile.a
+├── main_ogg_vorbis_2_pcm.c
+├── main_pcm_2_ogg_vorbis.c
+├── Makefile
+├── opensource
+│   └── libvorbis-1.3.7.tar.gz
+├── README.md
+├── reference_code
+│   ├── chaining_example.c
+│   ├── decoder_example.c
+│   ├── encoder_example.c
+│   ├── seeking_example.c
+│   └── vorbisfile_example.c
+└── tools
 
+10 directories, 28 files
 ```
