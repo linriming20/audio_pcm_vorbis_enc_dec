@@ -133,7 +133,7 @@ examples:
 #### 5、demo目录架构
 
 ```bash
-$ tree
+$ tree 
 .
 ├── audio
 │   ├── out1.ogg
@@ -164,6 +164,7 @@ $ tree
 ├── main_pcm_2_ogg_vorbis.c
 ├── Makefile
 ├── opensource
+│   ├── libogg-1.3.5.tar.gz
 │   └── libvorbis-1.3.7.tar.gz
 ├── README.md
 ├── reference_code
@@ -174,5 +175,5 @@ $ tree
 │   └── vorbisfile_example.c
 └── tools
 
-10 directories, 28 files
+10 directories, 29 files
 ```
